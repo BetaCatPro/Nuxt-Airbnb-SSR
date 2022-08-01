@@ -1,20 +1,47 @@
 {
-  "name": "nuxt-airbnb-ssr",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "vue": "^3.2.37"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^3.0.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.0.0",
-    "vue-tsc": "^0.38.4"
-  }
+    "name": "nuxt-airbnb-ssr",
+    "private": true,
+    "version": "0.1.0",
+    "scripts": {
+        "prepare": "husky install",
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
+        "lint:style": "stylelint \"./**/*.{css,less,vue,html,sass,scss}\" --fix",
+        "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md,less,sass,scss,sty}\""
+    },
+    "commitlint": {
+        "extends": ["@commitlint/config-conventional"]
+    },
+    "dependencies": {
+        "vue": "^3.2.37"
+    },
+    "devDependencies": {
+        "@commitlint/config-conventional": "^17.0.3",
+        "@typescript-eslint/eslint-plugin": "^5.31.0",
+        "@typescript-eslint/parser": "^5.31.0",
+        "@vitejs/plugin-vue": "^3.0.0",
+        "commitlint": "^17.0.3",
+        "eslint": "^8.21.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-vue": "^9.3.0",
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3",
+        "postcss": "^8.4.14",
+        "postcss-html": "^1.5.0",
+        "postcss-less": "^6.0.0",
+        "prettier": "^2.7.1",
+        "stylelint": "^14.9.1",
+        "stylelint-config-prettier": "^9.0.3",
+        "stylelint-config-recommended-less": "^1.0.4",
+        "stylelint-config-standard": "^26.0.0",
+        "stylelint-config-standard-vue": "^1.0.0",
+        "stylelint-less": "^1.0.6",
+        "stylelint-order": "^5.0.0",
+        "typescript": "^4.6.4",
+        "vite": "^3.0.0",
+        "vue-tsc": "^0.38.4"
+    }
 }
