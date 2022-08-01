@@ -12,7 +12,9 @@
         "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md,less,sass,scss,sty}\""
     },
     "commitlint": {
-        "extends": ["@commitlint/config-conventional"]
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
     },
     "dependencies": {
         "vue": "^3.2.37"
