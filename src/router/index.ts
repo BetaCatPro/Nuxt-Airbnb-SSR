@@ -2,9 +2,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
     {
+        path: '/',
+        redirect: '/home'
+    },
+    {
         path: '/home',
-        name: 'home',
-        component: () => import('@/views/home/index.vue'),
+        name: 'Home',
+        component: () => import('@/views/Home/index.vue'),
         meta: {
             title: '',
             keepAlive: false
@@ -12,8 +16,8 @@ const routes = [
     },
     {
         path: '/mine',
-        name: 'mine',
-        component: () => import('@/views/mine/index.vue'),
+        name: 'Mine',
+        component: () => import('@/views/Mine/index.vue'),
         meta: {
             title: '',
             keepAlive: false
