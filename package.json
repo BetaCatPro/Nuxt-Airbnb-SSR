@@ -17,7 +17,8 @@
         ]
     },
     "dependencies": {
-        "vue": "^3.2.37"
+        "vue": "^3.2.37",
+        "vue-router": "^4.0.13"
     },
     "devDependencies": {
         "@commitlint/config-conventional": "^17.0.3",
