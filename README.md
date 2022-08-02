@@ -1,23 +1,6 @@
-## Angular 默认提交类型
+# Note
 
-1. build：对构建系统或者外部依赖项进行了修改
-2. ci：对 CI 配置文件或脚本进行了修改
-3. docs：对文档进行了修改
-4. feat：增加新的特征
-5. fix：修复 bug
-6. pref：提高性能的代码更改
-7. refactor：既不是修复 bug 也不是添加特征的代码重构
-8. style：不影响代码含义的修改，比如空格、格式化、缺失的分号等
-9. test：增加确实的测试或者矫正已存在的测试
-
-```$xslt
-<type>(<scope>): <subject>
-
-// 空一行
-
-<body>
-
-// 空一行
-
-<footer>
-```
+-   vite.config.js 文件中使用 resolve, node 的版本要求如下: import which is supported in v16.0.0+ and v14.18.0+. v15 does not support this.
+-   eslint 中设置 "vue/multi-word-component-names":"off", 禁止检查 vue 文件命名规范(默认规范为驼峰或者 '-' 连接)
+-   配置 vite 指定传递给 CSS 预处理器的选项来引入全局 mixin 样式: vite.config.js 中配置 additionalData: '@import "src/styles/index.scss";'
+-
