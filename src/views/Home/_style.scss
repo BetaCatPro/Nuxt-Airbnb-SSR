@@ -1,0 +1,4 @@
+.sc-test {
+    color: $pink;
+    @include button-radius('2px');
+}
