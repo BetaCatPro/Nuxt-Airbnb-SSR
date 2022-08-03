@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { addOrUpdateDB } from "@/api";
+import { addOrUpdateDB } from '@/api'
 
 import en from 'element-plus/lib/locale/lang/en'
 import { useI18n } from 'vue-i18n'

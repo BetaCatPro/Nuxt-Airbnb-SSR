@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import router from '@/router'
 
 import App from '@/App.vue'
-import i18n from "@/language/i18n";
+import i18n from '@/language/i18n'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'

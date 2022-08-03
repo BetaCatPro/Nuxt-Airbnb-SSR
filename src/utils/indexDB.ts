@@ -10,7 +10,7 @@ export default class DB {
     openStore(storeName: string, keyPath: string, indexs?: Array<string>) {
         const request = window.indexedDB.open(this.dbName, 1)
         return new Promise((resolve, reject) => {
-            request.onsuccess = (event:any) => {
+            request.onsuccess = (event: any) => {
                 console.log('数据库打开成功')
                 this.db = event.target.result
             }
@@ -19,18 +19,20 @@ export default class DB {
             }
             request.onupgradeneeded = (event) => {
                 console.log('数据库升级成功')
-                const { result } : any = event.target
+                const { result }: any = event.target
                 const store = result.createObejectStore(storeName, {
                     autoIncrement: true,
                     keyPath
                 })
 
                 // 添加索引
-                indexs && indexs.length > 0 && indexs.map(item => {
-                    store.createIndex(item, item, {
-                        unique: false
+                indexs &&
+                    indexs.length > 0 &&
+                    indexs.map((item) => {
+                        store.createIndex(item, item, {
+                            unique: false
+                        })
                     })
-                })
                 store.transaction.oncomplete = (event: any) => {
                     console.log('创建对象仓库成功')
                 }
@@ -40,7 +42,9 @@ export default class DB {
 
     // 新增或修改数据库数据
     updateItem(storeName: string, data: any) {
-        const store = this.db.transaction([storeName], 'readwrite').objectStore(storeName)
+        const store = this.db
+            .transaction([storeName], 'readwrite')
+            .objectStore(storeName)
         const request = store.put({
             ...data,
             updatedTime: new Date().getTime()
@@ -55,7 +59,9 @@ export default class DB {
 
     // 删除数据库数据
     deleteItem(storeName: string, keyPath: number | string) {
-        const store = this.db.transaction([storeName], 'readwrite').objectStore(storeName)
+        const store = this.db
+            .transaction([storeName], 'readwrite')
+            .objectStore(storeName)
         const request = store.delete(keyPath)
         request.onsuccess = (event: any) => {
             console.log('数据库删除成功')
@@ -66,10 +72,10 @@ export default class DB {
     }
 
     // 查询数据库数据
-    getData(storeName: string, mode: string = 'one', key: string | number = '') {
+    getData(storeName: string, mode = 'one', key: string | number = '') {
         const store = this.db.transaction([storeName]).objectStore(storeName)
         return new Promise((resolve, reject) => {
-            let request = mode === 'one' ? store.get(key) : store.getAll()
+            const request = mode === 'one' ? store.get(key) : store.getAll()
             resolve(request)
         })
     }
