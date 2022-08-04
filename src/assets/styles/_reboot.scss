@@ -9,6 +9,8 @@
 html {
     line-height: 1.15; /* 1 */
     text-size-adjust: 100%; /* 2 */
+    padding: 0;
+    margin: 0;
 }
 
 /* Sections
@@ -19,6 +21,7 @@ html {
  */
 
 body {
+    padding: 0;
     margin: 0;
 }
 
