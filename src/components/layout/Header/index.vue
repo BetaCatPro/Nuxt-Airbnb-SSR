@@ -18,7 +18,7 @@ const handleSelect = (e: any) => {
 
 <template>
     <div class="header-common">
-        <img class="logo" src="" alt="airbnb" />
+        <img class="logo" src="../../../assets/images/airbnb.svg" alt="airbnb" />
         <el-menu
             :default-active="activeIndex"
             class="el-menu-demo"
