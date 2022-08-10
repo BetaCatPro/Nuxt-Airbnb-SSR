@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { saveLanguageAPI } from '@/api/layouts'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
 import { ref, defineEmits } from 'vue'
@@ -10,15 +11,31 @@ const activeIndex = ref('orders')
 const handleSelect = (e: any) => {
     if (e === 'zh') {
         emit('changeLang', zhCn)
-    } else {
+        saveLanguage(zhCn)
+    } else if (e === 'en') {
         emit('changeLang', en)
+        saveLanguage(en)
     }
+}
+
+// Mock 接口, 保存当前语言包
+const saveLanguage = (language: any) => {
+    saveLanguageAPI(language).then((res) => {
+        const success = res?.success
+        if (success) {
+            console.log('success')
+        }
+    })
 }
 </script>
 
 <template>
     <div class="header-common">
-        <img class="logo" src="../../../assets/images/airbnb.svg" alt="airbnb" />
+        <img
+            class="logo"
+            src="../../../assets/images/airbnb.svg"
+            alt="airbnb"
+        />
         <el-menu
             :default-active="activeIndex"
             class="el-menu-demo"

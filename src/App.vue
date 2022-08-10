@@ -35,7 +35,6 @@ const { locale: localLang } = useI18n()
 const locale = ref(zhCn)
 
 const changeLang = (lang: any) => {
-    console.log(lang)
     locale.value = lang
     localLang.value = lang.name
 }
