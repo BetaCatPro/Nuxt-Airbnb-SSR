@@ -6,22 +6,22 @@ import '@vue/runtime-core'
 export {}
 
 declare module '@vue/runtime-core' {
-    export interface GlobalComponents {
-        ElButton: typeof import('element-plus/es')['ElButton']
-        ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
-        ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
-        ElHeader: typeof import('element-plus/es')['ElHeader']
-        ElIcon: typeof import('element-plus/es')['ElIcon']
-        ElImage: typeof import('element-plus/es')['ElImage']
-        ElMenu: typeof import('element-plus/es')['ElMenu']
-        ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
-        ElPopover: typeof import('element-plus/es')['ElPopover']
-        ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
-        Header: typeof import('./src/components/layout/Header/index.vue')['default']
-        MainFooter: typeof import('./src/components/layouts/components/Footer/MainFooter.vue')['default']
-        MainHeader: typeof import('./src/components/layouts/components/Header/MainHeader.vue')['default']
-        MainLayout: typeof import('./src/components/layouts/MainLayout.vue')['default']
-        RouterLink: typeof import('vue-router')['RouterLink']
-        RouterView: typeof import('vue-router')['RouterView']
-    }
+  export interface GlobalComponents {
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
+    ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElImage: typeof import('element-plus/es')['ElImage']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElPopover: typeof import('element-plus/es')['ElPopover']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    Header: typeof import('./src/components/layout/Header/index.vue')['default']
+    MainFooter: typeof import('./src/components/layouts/components/Footer/MainFooter.vue')['default']
+    MainHeader: typeof import('./src/components/layouts/components/Header/MainHeader.vue')['default']
+    MainLayout: typeof import('./src/components/layouts/MainLayout.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+  }
 }

@@ -55,6 +55,7 @@ export const saveLanguageAPI = async (locale: any) => {
 // Mock接口：获取当前语言包
 export const fetchLanguageAPI = async () => {
     try {
+        await airbnbDB.open([{ language: { keyPath: 'id', indexs: ['name'] } }])
         const language = (await airbnbDB.getItem(storeName, 1)) as Language
         return {
             code: '000000',
