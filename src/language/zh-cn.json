@@ -1,0 +1,101 @@
+{
+    "loading": "加载中",
+    "require": "请输入{name}",
+    "header": {
+        "menu": {
+            "reservationCenter": "房源订单中心",
+            "history": "历史足迹",
+            "language": "国际化切换",
+            "chinese": "简体中文",
+            "english": "English"
+        }
+    },
+    "footer": {
+        "menu": {
+            "support": "客服支持",
+            "hosting": "出租",
+            "about": "爱此迎",
+            "discover": "发现"
+        },
+        "submenu": {
+            "careers": "工作机会",
+            "news": "爱此迎新闻",
+            "policy": "政策",
+            "accessibility": "无障碍设施",
+            "trustAndSafe": "信任与安全",
+            "invite": "邀请好友",
+            "evection": "商务差旅",
+            "magzine": "爱此迎杂志",
+            "airbnborg": "Airbnb.org",
+            "tryHosting": "为什么要出租?",
+            "hospitality": "待客之道",
+            "responsibility": "房东义务",
+            "experiences": "开展体验",
+            "resources": "资源中心",
+            "help": "帮助",
+            "neighbors": "邻里支持"
+        },
+        "privacy": "隐私政策",
+        "terms": "条款",
+        "sitemap": "网站地图"
+    },
+    "auth": {
+        "signinBtn": "进入爱此迎",
+        "signupBtn": "立即注册",
+        "signoutBtn": "退出",
+        "signinTab": "登录",
+        "signupTab": "注册",
+        "phone": "手机号",
+        "password": "密码"
+    },
+    "home": {
+        "title": "春季特惠房源",
+        "subtitle": "品质房源，低至 5 折",
+        "city": {
+            "hz": "杭州",
+            "sh": "上海",
+            "nj": "南京",
+            "cd": "成都",
+            "cq": "重庆",
+            "bj": "北京",
+            "sz": "苏州",
+            "gz": "广州"
+        },
+        "prev": "Prev",
+        "next": "Next"
+    },
+    "rooms": {
+        "share": {
+            "text": "分享",
+            "title": "与亲朋好友分享此房源"
+        },
+        "reserve": "立即预订",
+        "date": "日期",
+        "dateError": " 请选择日期",
+        "startDate": "入住日期",
+        "endDate": "退房日期",
+        "guests": "人数",
+        "guestsError": "请选择人数",
+        "guestsDescription": "最多 {guestNumber} 位房客，婴幼儿不计算在内。",
+        "adults": {
+            "title": "成人",
+            "subtitle": "13 岁以上"
+        },
+        "children": {
+            "title": "儿童",
+            "subtitle": "2 - 12 岁"
+        },
+        "infants": {
+            "title": "婴儿",
+            "subtitle": "2 岁以下"
+        },
+        "close": "关闭"
+    },
+    "reservation": {
+        "message": "给房东发消息",
+        "more": "查看更多订单"
+    },
+    "history": {
+        "empty": "暂无浏览记录"
+    }
+}
