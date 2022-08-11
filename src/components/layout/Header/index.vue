@@ -63,12 +63,20 @@ getLanguage()
             mode="horizontal"
             @select="handleSelect"
         >
-            <el-menu-item index="orders">{{ t('header.menu.reservationCenter') }}</el-menu-item>
-            <el-menu-item index="records">{{ t('header.menu.history') }}</el-menu-item>
+            <el-menu-item index="orders">{{
+                t('header.menu.reservationCenter')
+            }}</el-menu-item>
+            <el-menu-item index="records">{{
+                t('header.menu.history')
+            }}</el-menu-item>
             <el-sub-menu index="language">
                 <template #title>{{ t('header.menu.language') }}</template>
-                <el-menu-item index="zh">{{ t('header.menu.chinese') }}</el-menu-item>
-                <el-menu-item index="en">{{ t('header.menu.english') }}</el-menu-item>
+                <el-menu-item index="zh">{{
+                    t('header.menu.chinese')
+                }}</el-menu-item>
+                <el-menu-item index="en">{{
+                    t('header.menu.english')
+                }}</el-menu-item>
             </el-sub-menu>
             <el-menu-item index="avatar">
                 <img

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import {useI18n} from "vue-i18n";
+import { reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const footerMenu = reactive([
@@ -88,7 +88,7 @@ const footerMenu = reactive([
             }
         ]
     }
-]);
+])
 </script>
 
 <template>
@@ -97,7 +97,13 @@ const footerMenu = reactive([
         <ul>
             <li v-for="(item, index) in footerMenu" :key="index">
                 <h4>{{ t(item.title) }}</h4>
-                <a target="_blank" :href="itemInner.link" v-for="(itemInner, indexInner) in item.submenu" :key="indexInner">{{ t(itemInner.name) }}</a>
+                <a
+                    target="_blank"
+                    :href="itemInner.link"
+                    v-for="(itemInner, indexInner) in item.submenu"
+                    :key="indexInner"
+                    >{{ t(itemInner.name) }}</a
+                >
             </li>
         </ul>
         <div class="copy-right">@ 2022 Harry, Inc. All rights reserved</div>
