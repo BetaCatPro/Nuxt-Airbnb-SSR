@@ -3,6 +3,7 @@ import { resolve } from 'path'
 // import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { createSvg } from './src/components/SvgIcon'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -16,7 +17,8 @@ export default defineConfig({
         }),
         Components({
             resolvers: [ElementPlusResolver()]
-        })
+        }),
+        createSvg('./src/components/SvgIcon/icons/')
     ],
     resolve: {
         // 配置路径别名

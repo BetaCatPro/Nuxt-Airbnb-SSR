@@ -3,9 +3,20 @@ import { saveLanguageAPI, fetchLanguageAPI } from '@/api/layouts'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
 import { useI18n } from 'vue-i18n'
-import { ref, defineEmits } from 'vue'
+import { ref } from 'vue'
 
 const { t } = useI18n()
+
+const props = defineProps({
+    icon: {
+        type: String,
+        default: 'airbnb'
+    },
+    title: {
+        type: String,
+        default: ''
+    }
+})
 
 // const emit = defineEmits<{(e: 'changeLang', language: any):void}>()
 const emit = defineEmits(['changeLang'])
@@ -52,11 +63,7 @@ getLanguage()
 
 <template>
     <div class="header-common">
-        <img
-            class="logo"
-            src="../../../assets/images/airbnb.svg"
-            alt="airbnb"
-        />
+        <svg-icon v-if="props.icon" :name="props.icon" />
         <el-menu
             :default-active="activeIndex"
             class="el-menu-demo"
