@@ -63,8 +63,12 @@ getLanguage()
 
 <template>
     <div class="header-common">
-<!--        <svg-icon v-if="props.icon" :name="props.icon" />-->
-        <img src="../../../assets/images/logo-text.png" alt="airbnb" class="icon-airbnb">
+        <!--        <svg-icon v-if="props.icon" :name="props.icon" />-->
+        <img
+            src="../../../assets/images/logo-text.png"
+            alt="airbnb"
+            class="icon-airbnb"
+        />
         <el-menu
             :default-active="activeIndex"
             class="el-menu-demo"

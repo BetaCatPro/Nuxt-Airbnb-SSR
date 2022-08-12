@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {reactive, ref } from 'vue'
-import {useRouter} from "vue-router";
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { Lock, UserFilled } from '@element-plus/icons-vue';
+import { Lock, UserFilled } from '@element-plus/icons-vue'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -12,12 +12,11 @@ const ruleForm = reactive({
     password: ''
 })
 
-const handleClick = (e: any)=> {
+const handleClick = (e: any) => {
     // router.push({
     //     name: e
     // })
 }
-
 </script>
 
 <template>
@@ -25,9 +24,7 @@ const handleClick = (e: any)=> {
         <div class="left-part"></div>
         <div class="right-part">
             <div class="login-panel">
-                <el-tabs
-                    v-model="activeName"
-                    class="tabs">
+                <el-tabs v-model="activeName" class="tabs">
                     <el-tab-pane name="signin">
                         <template #label>
                             <span>{{ t('auth.signinTab') }}</span>
@@ -46,14 +43,16 @@ const handleClick = (e: any)=> {
                     ref="ruleFormRef"
                     class="mt-5"
                     :model="ruleForm"
-                    :rules="rules">
+                    :rules="rules"
+                >
                     <el-form-item prop="phone">
                         <el-input
                             clearable
                             class="input"
                             :placeholder="t('auth.phone')"
                             :prefix-icon="UserFilled"
-                            v-model="ruleForm.phone" />
+                            v-model="ruleForm.phone"
+                        />
                     </el-form-item>
 
                     <el-form-item prop="password">
@@ -63,18 +62,16 @@ const handleClick = (e: any)=> {
                             class="input"
                             :placeholder="t('auth.password')"
                             :prefix-icon="Lock"
-                            v-model="ruleForm.password" />
+                            v-model="ruleForm.password"
+                        />
                     </el-form-item>
 
                     <el-form-item>
-                        <el-button
-                            round
-                            type="primary"
-                            native-type="submit">
+                        <el-button round type="primary" native-type="submit">
                             {{
-                            activeName === 'signin'
-                            ? t('auth.signinBtn')
-                            : t('auth.signupBtn')
+                                activeName === 'signin'
+                                    ? t('auth.signinBtn')
+                                    : t('auth.signupBtn')
                             }}
                         </el-button>
                     </el-form-item>
