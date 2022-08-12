@@ -4,9 +4,12 @@ import Footer from '@/components/layout/Footer/index.vue'
 import { useI18n } from 'vue-i18n'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import { ref } from 'vue'
+import { useRoute } from "vue-router";
 
 const { locale: localLang } = useI18n()
 const locale = ref(zhCn)
+
+const route = useRoute()
 
 const changeLang = (lang: any) => {
     locale.value = lang
@@ -16,8 +19,8 @@ const changeLang = (lang: any) => {
 
 <template>
     <el-config-provider :locale="locale">
-        <Header @changeLang="changeLang" />
+        <Header v-show="route.fullPath.indexOf('/login')" @changeLang="changeLang" />
         <router-view />
-        <Footer />
+        <Footer v-show="route.fullPath.indexOf('/login')" />
     </el-config-provider>
 </template>

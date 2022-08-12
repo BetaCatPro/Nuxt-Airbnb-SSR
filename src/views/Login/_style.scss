@@ -1,0 +1,42 @@
+.login-page {
+    @include flex-layout(row);
+    height: 100vh;
+
+    .left-part {
+        flex: 3;
+        height: 100%;
+        background: #15258a url('../../assets/images/auth/background.png') no-repeat
+        center/100%;
+    }
+    .right-part {
+        flex: 2;
+        @include flex-layout(row, center);
+
+        .login-panel {
+            width: 80%;
+
+            :deep(.el-tabs__nav-wrap) {
+                &::after {
+                    display: none;
+                }
+            }
+
+            :deep(.el-tabs__nav) {
+                float: initial;
+                text-align: center;
+            }
+
+            :deep(.el-tabs__item) {
+                height: 36px;
+            }
+
+            :deep(.input) {
+                .el-input__wrapper {
+                    background-color: rgb(243 244 246);
+                    border-radius: var(--el-border-radius-round);
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}

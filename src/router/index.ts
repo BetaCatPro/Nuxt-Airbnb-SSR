@@ -18,6 +18,15 @@ const routes = [
             title: '',
             keepAlive: false
         }
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/views/Login/index.vue'),
+        meta: {
+            title: '',
+            keepAlive: false
+        }
     }
 ]
 
