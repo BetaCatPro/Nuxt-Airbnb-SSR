@@ -4,9 +4,9 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
-import router from "@/router";
-import { userSignOutAPI } from "@/api/auth";
-import { IResult } from "@/api/interface";
+import router from '@/router'
+import { userSignOutAPI } from '@/api/auth'
+import { IResult } from '@/api/interface'
 import { ElMessage } from 'element-plus'
 
 const { t } = useI18n()
@@ -37,7 +37,7 @@ const handleSelect = (e: any) => {
         saveLanguage(en)
     } else if (e === 'login') {
         router.push('login')
-    } else if(e === 'logout') {
+    } else if (e === 'logout') {
         userLogout()
     }
 }
@@ -45,7 +45,7 @@ const handleSelect = (e: any) => {
 const userLogout = () => {
     userSignOutAPI().then((res: IResult | undefined) => {
         const { success, message, result } = res
-        if(success) {
+        if (success) {
             ElMessage({ message, type: 'success', showClose: true })
             localStorage.removeItem('userStatus')
             router.push('login')

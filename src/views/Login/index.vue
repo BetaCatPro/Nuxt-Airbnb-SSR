@@ -3,12 +3,12 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Lock, UserFilled } from '@element-plus/icons-vue'
-import { userSignInAPI, userSignUpAPI } from "@/api/auth";
-import { ElMessage } from 'element-plus';
-import { IResult } from "@/api/interface";
+import { userSignInAPI, userSignUpAPI } from '@/api/auth'
+import { ElMessage } from 'element-plus'
+import { IResult } from '@/api/interface'
 
 interface IRuleForm {
-    phone: string,
+    phone: string
     password: string
 }
 
@@ -16,15 +16,15 @@ const router = useRouter()
 const { t } = useI18n()
 const activeName = ref('signin')
 const ruleFormRef = ref()
-const ruleForm : IRuleForm = reactive({
+const ruleForm: IRuleForm = reactive({
     phone: '',
     password: ''
 })
 
 const submitForm = () => {
     ruleFormRef.value.validate((valid: any) => {
-        if(valid) {
-            if(activeName.value === 'signin') {
+        if (valid) {
+            if (activeName.value === 'signin') {
                 userSignIn(ruleForm)
             } else {
                 userSignUp(ruleForm)
@@ -38,7 +38,7 @@ const submitForm = () => {
 const userSignIn = (params: any) => {
     userSignInAPI(params).then((res: IResult | undefined) => {
         const { success, message } = res
-        if(success) {
+        if (success) {
             ElMessage({ message, type: 'success', showClose: true })
             localStorage.setItem('userStatus', '1')
             router.push('home')
@@ -51,7 +51,7 @@ const userSignIn = (params: any) => {
 const userSignUp = (params: any) => {
     userSignUpAPI(params).then((res: IResult | undefined) => {
         const { success, message } = res
-        if(success) {
+        if (success) {
             ElMessage({ message, type: 'success', showClose: true })
         } else {
             ElMessage({ message, type: 'error', showClose: true })
