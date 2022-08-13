@@ -4,6 +4,10 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
+import router from "@/router";
+import { userSignOutAPI } from "@/api/auth";
+import { IResult } from "@/api/interface";
+import { ElMessage } from 'element-plus'
 
 const { t } = useI18n()
 
@@ -22,6 +26,8 @@ const { t } = useI18n()
 const emit = defineEmits(['changeLang'])
 
 const activeIndex = ref('orders')
+const userStatus = localStorage.getItem('userStatus') || '0'
+
 const handleSelect = (e: any) => {
     if (e === 'zh') {
         emit('changeLang', zhCn)
@@ -29,7 +35,24 @@ const handleSelect = (e: any) => {
     } else if (e === 'en') {
         emit('changeLang', en)
         saveLanguage(en)
+    } else if (e === 'login') {
+        router.push('login')
+    } else if(e === 'logout') {
+        userLogout()
     }
+}
+
+const userLogout = () => {
+    userSignOutAPI().then((res: IResult | undefined) => {
+        const { success, message, result } = res
+        if(success) {
+            ElMessage({ message, type: 'success', showClose: true })
+            localStorage.removeItem('userStatus')
+            router.push('login')
+        } else {
+            ElMessage({ message, type: 'error', showClose: true })
+        }
+    })
 }
 
 // Mock 接口, 保存当前语言包
@@ -58,7 +81,7 @@ const getLanguage = () => {
     })
 }
 
-getLanguage()
+// getLanguage()
 </script>
 
 <template>
@@ -71,7 +94,6 @@ getLanguage()
         />
         <el-menu
             :default-active="activeIndex"
-            class="el-menu-demo"
             mode="horizontal"
             @select="handleSelect"
         >
@@ -90,12 +112,19 @@ getLanguage()
                     t('header.menu.english')
                 }}</el-menu-item>
             </el-sub-menu>
-            <el-menu-item index="avatar">
-                <img
-                    class="avatar"
-                    src="../../../assets/images/avatar.jpeg"
-                    alt="avatar"
-                />
+
+            <el-sub-menu index="avatar" v-if="userStatus === '1'">
+                <template #title>
+                    <img
+                        class="avatar"
+                        src="../../../assets/images/avatar.jpeg"
+                        alt="avatar"
+                    />
+                </template>
+                <el-menu-item index="logout">退出</el-menu-item>
+            </el-sub-menu>
+            <el-menu-item index="login" v-else>
+                {{ t('auth.signinTab') }}/{{ t('auth.signupTab') }}
             </el-menu-item>
         </el-menu>
     </div>
