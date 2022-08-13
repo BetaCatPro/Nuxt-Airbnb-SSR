@@ -28,6 +28,7 @@
 
             :deep(.el-tabs__item) {
                 height: 36px;
+                font-size: 17px;
             }
 
             :deep(.input) {
@@ -36,6 +37,10 @@
                     border-radius: var(--el-border-radius-round);
                     box-shadow: none;
                 }
+            }
+
+            :deep(.el-button) {
+                width: 100%;
             }
         }
     }

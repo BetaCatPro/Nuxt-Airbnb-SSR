@@ -5,18 +5,11 @@ import { useI18n } from 'vue-i18n'
 import { Lock, UserFilled } from '@element-plus/icons-vue'
 
 const { t } = useI18n()
-const router = useRouter()
 const activeName = ref('login')
 const ruleForm = reactive({
     phone: '',
     password: ''
 })
-
-const handleClick = (e: any) => {
-    // router.push({
-    //     name: e
-    // })
-}
 </script>
 
 <template>

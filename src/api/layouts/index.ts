@@ -1,4 +1,4 @@
-import { airbnbDB } from '@/database'
+import { airbnbDB, languageObjectStore } from '@/database'
 import { ElLoading, ElMessage } from 'element-plus'
 
 interface Language {
@@ -8,7 +8,7 @@ interface Language {
     name: string
 }
 
-const storeName = 'language'
+const storeName = Object.keys(languageObjectStore)[0]
 
 // Mock接口：保存当前语言包
 export const saveLanguageAPI = async (locale: any) => {
@@ -18,7 +18,6 @@ export const saveLanguageAPI = async (locale: any) => {
     })
 
     try {
-        await airbnbDB.open([{ language: { keyPath: 'id', indexs: ['name'] } }])
         const language = (await airbnbDB.getItem(storeName, 1)) as Language
 
         if (!language) {
@@ -55,7 +54,6 @@ export const saveLanguageAPI = async (locale: any) => {
 // Mock接口：获取当前语言包
 export const fetchLanguageAPI = async () => {
     try {
-        await airbnbDB.open([{ language: { keyPath: 'id', indexs: ['name'] } }])
         const language = (await airbnbDB.getItem(storeName, 1)) as Language
         return {
             code: '000000',
