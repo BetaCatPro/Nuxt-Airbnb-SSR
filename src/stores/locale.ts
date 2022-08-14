@@ -1,7 +1,7 @@
-import { fetchLanguageAPI, saveLanguageAPI } from '@/api/layouts';
-import i18n from '@/language/i18n';
-import en from 'element-plus/lib/locale/lang/en';
-import { defineStore } from 'pinia';
+import { fetchLanguageAPI, saveLanguageAPI } from '@/api/layouts'
+import i18n from '@/language/i18n'
+import en from 'element-plus/lib/locale/lang/en'
+import { defineStore } from 'pinia'
 
 export const useLocaleStore = defineStore('locale', {
     state: () => ({
@@ -10,17 +10,17 @@ export const useLocaleStore = defineStore('locale', {
     getters: {},
     actions: {
         async getLanguage() {
-            console.log('Start getting Language');
-            const response = await fetchLanguageAPI();
+            console.log('Start getting Language')
+            const response = await fetchLanguageAPI()
             if (response && response.result) {
-                const {locale, name} = response.result;
-                this.locale = locale;
-                i18n.global.locale.value = name;
+                const { locale, name } = response.result
+                this.locale = locale
+                i18n.global.locale.value = name
             }
         },
         async setLanguage(locale: any) {
-            await saveLanguageAPI(locale);
-            this.locale = locale;
+            await saveLanguageAPI(locale)
+            this.locale = locale
         }
     }
-});
+})

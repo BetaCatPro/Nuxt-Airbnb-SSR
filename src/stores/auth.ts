@@ -1,5 +1,5 @@
-import { getCookie } from '@/utils/util';
-import { defineStore } from 'pinia';
+import { getCookie } from '@/utils/util'
+import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
@@ -7,10 +7,10 @@ export const useAuthStore = defineStore('auth', {
     }),
     actions: {
         initAuthentication() {
-            getCookie('token') && this.setLoggedIn(1);
+            getCookie('token') && this.setLoggedIn(1)
         },
         setLoggedIn(status: number) {
-            this.loggedIn = status;
+            this.loggedIn = status
         }
     }
-});
+})

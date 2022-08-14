@@ -8,8 +8,8 @@ import router from '@/router'
 import { userSignOutAPI } from '@/api/auth'
 import { IResult } from '@/api/interface'
 import { ElMessage } from 'element-plus'
-import { useAuthStore } from '@/stores/auth';
-import { useLocaleStore } from "@/stores/locale";
+import { useAuthStore } from '@/stores/auth'
+import { useLocaleStore } from '@/stores/locale'
 
 const { t } = useI18n()
 
@@ -39,11 +39,11 @@ const handleSelect = (e: any) => {
 const userLogout = () => {
     userSignOutAPI().then((res: IResult | undefined) => {
         const { success, message, result } = res
-        const { status } = result;
+        const { status } = result
         if (success) {
-            localStorage.removeItem('userId');
-            authStore.setLoggedIn(status);
-            ElMessage({message, type: 'success', showClose: true});
+            localStorage.removeItem('userId')
+            authStore.setLoggedIn(status)
+            ElMessage({ message, type: 'success', showClose: true })
             router.push('login')
         } else {
             ElMessage({ message, type: 'error', showClose: true })
