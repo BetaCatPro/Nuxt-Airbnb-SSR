@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import useForm from '@/composables/auth/useForm';
-import { Lock, UserFilled } from '@element-plus/icons-vue';
-import { useI18n } from 'vue-i18n';
+import useForm from '@/composables/auth/useForm'
+import { Lock, UserFilled } from '@element-plus/icons-vue'
+import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n();
+const { t } = useI18n()
 const {
     activeName,
     ruleFormRef,
@@ -11,7 +11,7 @@ const {
     rules,
     handleSubmitForm,
     handleResetForm
-} = useForm();
+} = useForm()
 </script>
 
 <template>
@@ -25,16 +25,21 @@ const {
                 <el-tabs
                     v-model="activeName"
                     @tab-click="handleResetForm(ruleFormRef)"
-                    class="tabs">
+                    class="tabs"
+                >
                     <el-tab-pane name="signin">
                         <template #label>
-                            <span class="tabs-label text-lg">{{ t('auth.signinTab') }}</span>
+                            <span class="tabs-label text-lg">{{
+                                t('auth.signinTab')
+                            }}</span>
                         </template>
                     </el-tab-pane>
 
                     <el-tab-pane name="signup">
                         <template #label>
-                            <span class="tabs-label text-lg">{{ t('auth.signupTab') }}</span>
+                            <span class="tabs-label text-lg">{{
+                                t('auth.signupTab')
+                            }}</span>
                         </template>
                     </el-tab-pane>
                 </el-tabs>
@@ -45,14 +50,16 @@ const {
                     class="mt-5"
                     :model="ruleForm"
                     :rules="rules"
-                    @keyup.enter.self="handleSubmitForm(ruleFormRef)">
+                    @keyup.enter.self="handleSubmitForm(ruleFormRef)"
+                >
                     <el-form-item prop="phone">
                         <el-input
                             clearable
                             class="input"
                             :placeholder="t('auth.phone')"
                             :prefix-icon="UserFilled"
-                            v-model="ruleForm.phone" />
+                            v-model="ruleForm.phone"
+                        />
                     </el-form-item>
 
                     <el-form-item prop="password">
@@ -62,7 +69,8 @@ const {
                             class="input"
                             :placeholder="t('auth.password')"
                             :prefix-icon="Lock"
-                            v-model="ruleForm.password" />
+                            v-model="ruleForm.password"
+                        />
                     </el-form-item>
 
                     <el-form-item class="mt-16">
@@ -71,11 +79,12 @@ const {
                             type="primary"
                             class="w-full"
                             native-type="submit"
-                            @click.prevent="handleSubmitForm(ruleFormRef)">
+                            @click.prevent="handleSubmitForm(ruleFormRef)"
+                        >
                             {{
-                            activeName === 'signin'
-                            ? t('auth.signinBtn')
-                            : t('auth.signupBtn')
+                                activeName === 'signin'
+                                    ? t('auth.signinBtn')
+                                    : t('auth.signupBtn')
                             }}
                         </el-button>
                     </el-form-item>
@@ -86,5 +95,5 @@ const {
 </template>
 
 <style lang="scss" scoped>
-@import "style";
+@import 'style';
 </style>
