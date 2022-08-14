@@ -11,17 +11,6 @@ import { ElMessage } from 'element-plus'
 
 const { t } = useI18n()
 
-// const props = defineProps({
-//     icon: {
-//         type: String,
-//         default: 'airbnb'
-//     },
-//     title: {
-//         type: String,
-//         default: ''
-//     }
-// })
-
 // const emit = defineEmits<{(e: 'changeLang', language: any):void}>()
 const emit = defineEmits(['changeLang'])
 

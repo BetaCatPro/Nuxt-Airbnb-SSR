@@ -1,80 +1,40 @@
-<script setup lang="ts">
-import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
-import { Lock, UserFilled } from '@element-plus/icons-vue'
-import { userSignInAPI, userSignUpAPI } from '@/api/auth'
-import { ElMessage } from 'element-plus'
-import { IResult } from '@/api/interface'
+<script lang="ts" setup>
+import useForm from '@/composables/auth/useForm';
+import { Lock, UserFilled } from '@element-plus/icons-vue';
+import { useI18n } from 'vue-i18n';
 
-interface IRuleForm {
-    phone: string
-    password: string
-}
-
-const router = useRouter()
-const { t } = useI18n()
-const activeName = ref('signin')
-const ruleFormRef = ref()
-const ruleForm: IRuleForm = reactive({
-    phone: '',
-    password: ''
-})
-
-const submitForm = () => {
-    ruleFormRef.value.validate((valid: any) => {
-        if (valid) {
-            if (activeName.value === 'signin') {
-                userSignIn(ruleForm)
-            } else {
-                userSignUp(ruleForm)
-            }
-        } else {
-            return false
-        }
-    })
-}
-
-const userSignIn = (params: any) => {
-    userSignInAPI(params).then((res: IResult | undefined) => {
-        const { success, message } = res
-        if (success) {
-            ElMessage({ message, type: 'success', showClose: true })
-            localStorage.setItem('userStatus', '1')
-            router.push('home')
-        } else {
-            ElMessage({ message, type: 'error', showClose: true })
-        }
-    })
-}
-
-const userSignUp = (params: any) => {
-    userSignUpAPI(params).then((res: IResult | undefined) => {
-        const { success, message } = res
-        if (success) {
-            ElMessage({ message, type: 'success', showClose: true })
-        } else {
-            ElMessage({ message, type: 'error', showClose: true })
-        }
-    })
-}
+const { t } = useI18n();
+const {
+    activeName,
+    ruleFormRef,
+    ruleForm,
+    rules,
+    handleSubmitForm,
+    handleResetForm
+} = useForm();
 </script>
 
 <template>
-    <div class="login-page">
-        <div class="left-part"></div>
-        <div class="right-part">
+    <div class="login-page w-screen h-screen flex flex-row">
+        <div class="left-part">
+            <router-link :to="{ name: 'Home' }" class="block w-full h-full" />
+        </div>
+
+        <div class="right-part flex justify-center items-center">
             <div class="login-panel">
-                <el-tabs v-model="activeName" class="tabs">
+                <el-tabs
+                    v-model="activeName"
+                    @tab-click="handleResetForm(ruleFormRef)"
+                    class="tabs">
                     <el-tab-pane name="signin">
                         <template #label>
-                            <span>{{ t('auth.signinTab') }}</span>
+                            <span class="tabs-label text-lg">{{ t('auth.signinTab') }}</span>
                         </template>
                     </el-tab-pane>
 
                     <el-tab-pane name="signup">
                         <template #label>
-                            <span>{{ t('auth.signupTab') }}</span>
+                            <span class="tabs-label text-lg">{{ t('auth.signupTab') }}</span>
                         </template>
                     </el-tab-pane>
                 </el-tabs>
@@ -85,15 +45,14 @@ const userSignUp = (params: any) => {
                     class="mt-5"
                     :model="ruleForm"
                     :rules="rules"
-                >
+                    @keyup.enter.self="handleSubmitForm(ruleFormRef)">
                     <el-form-item prop="phone">
                         <el-input
                             clearable
                             class="input"
                             :placeholder="t('auth.phone')"
                             :prefix-icon="UserFilled"
-                            v-model="ruleForm.phone"
-                        />
+                            v-model="ruleForm.phone" />
                     </el-form-item>
 
                     <el-form-item prop="password">
@@ -103,16 +62,20 @@ const userSignUp = (params: any) => {
                             class="input"
                             :placeholder="t('auth.password')"
                             :prefix-icon="Lock"
-                            v-model="ruleForm.password"
-                        />
+                            v-model="ruleForm.password" />
                     </el-form-item>
 
-                    <el-form-item>
-                        <el-button @click="submitForm" round type="primary">
+                    <el-form-item class="mt-16">
+                        <el-button
+                            round
+                            type="primary"
+                            class="w-full"
+                            native-type="submit"
+                            @click.prevent="handleSubmitForm(ruleFormRef)">
                             {{
-                                activeName === 'signin'
-                                    ? t('auth.signinBtn')
-                                    : t('auth.signupBtn')
+                            activeName === 'signin'
+                            ? t('auth.signinBtn')
+                            : t('auth.signupBtn')
                             }}
                         </el-button>
                     </el-form-item>
@@ -122,6 +85,6 @@ const userSignUp = (params: any) => {
     </div>
 </template>
 
-<style scoped lang="scss">
-@import 'style';
+<style lang="scss" scoped>
+@import "style";
 </style>

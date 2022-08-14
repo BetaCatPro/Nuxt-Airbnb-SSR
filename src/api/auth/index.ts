@@ -96,6 +96,7 @@ export const userSignInAPI = async (
         } else {
             const token = new Date().getTime().toString()
             document.cookie = `token=${token}`
+            localStorage.setItem('userStatus', '1')
             const userId = await airbnbDB.updateItem(storeName, {
                 ...user,
                 status: 1,
