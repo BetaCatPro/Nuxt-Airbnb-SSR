@@ -8,22 +8,27 @@ import router from '@/router'
 import { userSignOutAPI } from '@/api/auth'
 import { IResult } from '@/api/interface'
 import { ElMessage } from 'element-plus'
+import { useAuthStore } from '@/stores/auth';
+import { useLocaleStore } from "@/stores/locale";
 
 const { t } = useI18n()
 
 // const emit = defineEmits<{(e: 'changeLang', language: any):void}>()
 const emit = defineEmits(['changeLang'])
 
+const authStore = useAuthStore()
+const localeStore = useLocaleStore()
+const userStatus = authStore.loggedIn
+
 const activeIndex = ref('orders')
-const userStatus = localStorage.getItem('userStatus') || '0'
 
 const handleSelect = (e: any) => {
     if (e === 'zh') {
         emit('changeLang', zhCn)
-        saveLanguage(zhCn)
+        localeStore.setLanguage(zhCn)
     } else if (e === 'en') {
         emit('changeLang', en)
-        saveLanguage(en)
+        localeStore.setLanguage(en)
     } else if (e === 'login') {
         router.push('login')
     } else if (e === 'logout') {
@@ -34,9 +39,11 @@ const handleSelect = (e: any) => {
 const userLogout = () => {
     userSignOutAPI().then((res: IResult | undefined) => {
         const { success, message, result } = res
+        const { status } = result;
         if (success) {
-            ElMessage({ message, type: 'success', showClose: true })
-            localStorage.removeItem('userStatus')
+            localStorage.removeItem('userId');
+            authStore.setLoggedIn(status);
+            ElMessage({message, type: 'success', showClose: true});
             router.push('login')
         } else {
             ElMessage({ message, type: 'error', showClose: true })
@@ -44,33 +51,7 @@ const userLogout = () => {
     })
 }
 
-// Mock 接口, 保存当前语言包
-const saveLanguage = (language: any) => {
-    saveLanguageAPI(language).then((res) => {
-        const success = res?.success
-        if (success) {
-            console.log('切换语言成功')
-        }
-    })
-}
-
-// Mock接口：获取当前语言包
-const getLanguage = () => {
-    fetchLanguageAPI().then((res) => {
-        const success = res?.success
-        const result = res?.result
-        if (success && result) {
-            console.log('当前语言包: ' + result.name)
-            if (result.name === 'zh-cn') {
-                emit('changeLang', zhCn)
-            } else if (result.name === 'en') {
-                emit('changeLang', en)
-            }
-        }
-    })
-}
-
-// getLanguage()
+localeStore.getLanguage()
 </script>
 
 <template>

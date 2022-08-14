@@ -5,6 +5,7 @@ import App from '@/App.vue'
 import i18n from '@/language/i18n'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import { createPinia } from 'pinia';
 import { airbnbDB, languageObjectStore, usersObjectStore } from '@/database'
 
 router.beforeEach((to, from, next) => {
@@ -22,8 +23,10 @@ router.beforeEach((to, from, next) => {
 })
 
 const app = createApp(App)
+const pinia = createPinia();
 app.use(router)
 app.use(ElementPlus)
 app.use(i18n)
+app.use(pinia)
 app.component('svg-icon', svgIcon)
 app.mount('#app')
