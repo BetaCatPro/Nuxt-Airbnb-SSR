@@ -5,6 +5,8 @@ import { useI18n } from 'vue-i18n'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useLocaleStore } from "@/stores/locale";
+const localeStore = useLocaleStore();
 
 const { locale: localLang } = useI18n()
 const locale = ref(zhCn)
@@ -18,7 +20,7 @@ const changeLang = (lang: any) => {
 </script>
 
 <template>
-    <el-config-provider :locale="locale">
+    <el-config-provider :locale="localeStore.locale">
         <Header
             v-show="route.fullPath.indexOf('/login')"
             @changeLang="changeLang"
