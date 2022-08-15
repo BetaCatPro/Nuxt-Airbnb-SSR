@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { saveLanguageAPI, fetchLanguageAPI } from '@/api/layouts'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
-import router from '@/router'
+import { useRouter } from 'vue-router'
 import { userSignOutAPI } from '@/api/auth'
 import { IResult } from '@/api/interface'
 import { ElMessage } from 'element-plus'
@@ -12,22 +11,17 @@ import { useAuthStore } from '@/stores/auth'
 import { useLocaleStore } from '@/stores/locale'
 
 const { t } = useI18n()
-
-// const emit = defineEmits<{(e: 'changeLang', language: any):void}>()
-const emit = defineEmits(['changeLang'])
+const router = useRouter()
 
 const authStore = useAuthStore()
 const localeStore = useLocaleStore()
-const userStatus = authStore.loggedIn
 
 const activeIndex = ref('orders')
 
 const handleSelect = (e: any) => {
     if (e === 'zh') {
-        emit('changeLang', zhCn)
         localeStore.setLanguage(zhCn)
     } else if (e === 'en') {
-        emit('changeLang', en)
         localeStore.setLanguage(en)
     } else if (e === 'login') {
         router.push('login')
@@ -50,8 +44,6 @@ const userLogout = () => {
         }
     })
 }
-
-localeStore.getLanguage()
 </script>
 
 <template>
@@ -83,7 +75,7 @@ localeStore.getLanguage()
                 }}</el-menu-item>
             </el-sub-menu>
 
-            <el-sub-menu index="avatar" v-if="userStatus === '1'">
+            <el-sub-menu index="avatar" v-if="authStore.loggedIn === 1">
                 <template #title>
                     <img
                         class="avatar"

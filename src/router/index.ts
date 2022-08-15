@@ -1,42 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
+import routes from './routes'
 
-const routes = [
-    {
-        path: '/',
-        redirect: '/home'
-    },
-    {
-        path: '/home',
-        name: 'Home',
-        component: () => import('@/views/Home/index.vue'),
-        meta: {
-            title: '',
-            keepAlive: false
-        }
-    },
-    {
-        path: '/mine',
-        name: 'Mine',
-        component: () => import('@/views/Mine/index.vue'),
-        meta: {
-            title: '',
-            keepAlive: false
-        }
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: () => import('@/views/Login/index.vue'),
-        meta: {
-            title: '',
-            keepAlive: false
-        }
-    }
-]
-
-const router = createRouter({
-    history: createWebHistory(),
-    routes
-})
-
-export default router
+export function createSSRRouter() {
+    return createRouter({
+        history: import.meta.env.SSR
+            ? createMemoryHistory()
+            : createWebHistory(),
+        routes
+    })
+}

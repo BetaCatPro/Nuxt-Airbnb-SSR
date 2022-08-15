@@ -1,5 +1,9 @@
 import { request } from '@/http/axios'
-import { LoginInfo } from '@/type/User'
+
+export interface LoginInfo {
+    usename: string
+    password: string
+}
 
 /**
  * @description -封装User类型的接口方法
