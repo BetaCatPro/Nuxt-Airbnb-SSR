@@ -1,71 +1,39 @@
-.el-header {
-    .menu {
-        padding: 0 24px;
-        border-color: #ebebeb;
+.header-common {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    position: relative;
+    align-items: center;
 
-        &.show-white-text {
-            .menu-item {
-                color: white;
-            }
+    .icon-airbnb {
+        width: 180px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        z-index: 10;
+    }
 
-            .submenu {
-                :deep(.el-sub-menu__title) {
-                    color: white;
-                }
-            }
-        }
+    .el-menu {
+        width: inherit;
+        padding: 0 25px;
+        justify-content: right;
+        height: 60px;
+        align-items: center;
 
-        .menu-item {
-            padding: 0 12px;
-            background-color: transparent;
-            border-bottom-color: transparent;
+        .el-menu-item {
+            height: 60px;
+            font-size: 16px;
 
-            &:hover,
-            &:focus {
-                background-color: transparent;
-            }
-
-            &:not(.logo):hover {
-                border-bottom: 2px solid white;
-            }
-
-            &.logo {
-                border: none;
+            .el-sub-menu__title {
+                font-size: 16px;
             }
         }
+    }
 
-        .submenu {
-            :deep(.el-sub-menu__title) {
-                padding: 0 12px;
-                background-color: transparent !important;
-            }
-        }
-
-        .logo-container {
-            width: 162px;
-            height: 36px;
-
-            .image-slot {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: 100%;
-
-                &.error {
-                    background: var(--el-fill-color-light);
-                    color: var(--el-text-color-secondary);
-                }
-
-                .el-icon {
-                    margin: 0;
-                    font-size: 20px;
-                }
-            }
-        }
-
-        .avatar {
-            box-shadow: rgb(235 235 235) 0px 0px 0px 2px;
-        }
+    .avatar {
+        box-shadow: rgb(235, 235, 235) 0px 0px 0px 2px;
+        border-radius: 50%;
     }
 }

@@ -23,18 +23,6 @@ body,
     height: 100%;
 }
 
-.menu-popup-container {
-    .el-menu {
-        min-width: 115px;
-    }
-
-    .el-menu-item {
-        &:hover {
-            background-color: transparent !important;
-        }
-    }
-}
-
 /**
  * Render the `main` element consistently in IE.
  */
