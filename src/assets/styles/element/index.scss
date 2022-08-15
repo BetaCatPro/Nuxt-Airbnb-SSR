@@ -1,5 +1,5 @@
 @forward 'element-plus/theme-chalk/src/common/var.scss'
     with(
-    // do not use same name, it will override.
-    $text-color: ('primary': #484848)
+        // do not use same name, it will override.
+        $text-color: ('primary': #484848)
     );

@@ -1,18 +1,18 @@
-import vueI18n from '@intlify/vite-plugin-vue-i18n';
-import vue from '@vitejs/plugin-vue';
-import * as path from 'path';
-import { visualizer } from 'rollup-plugin-visualizer';
-import AutoImport from 'unplugin-auto-import/vite';
-import IconsResolver from 'unplugin-icons/resolver';
-import Icons from 'unplugin-icons/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import Components from 'unplugin-vue-components/vite';
-import { UserConfig } from 'vite';
-import viteCompression from 'vite-plugin-compression';
-import Inspect from 'vite-plugin-inspect';
-import svgLoader from 'vite-svg-loader';
+import vueI18n from '@intlify/vite-plugin-vue-i18n'
+import vue from '@vitejs/plugin-vue'
+import * as path from 'path'
+import { visualizer } from 'rollup-plugin-visualizer'
+import AutoImport from 'unplugin-auto-import/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import { UserConfig } from 'vite'
+import viteCompression from 'vite-plugin-compression'
+import Inspect from 'vite-plugin-inspect'
+import svgLoader from 'vite-svg-loader'
 
-const pathSrc = path.resolve(__dirname, 'src');
+const pathSrc = path.resolve(__dirname, 'src')
 
 // https://vitejs.dev/config/
 export default ({ command }) => {
@@ -76,7 +76,7 @@ export default ({ command }) => {
                 autoInstall: true
             })
         ]
-    };
+    }
 
     if (command === 'build') {
         config.plugins.push(
@@ -85,8 +85,8 @@ export default ({ command }) => {
                 gzipSize: true,
                 brotliSize: true
             })
-        );
+        )
     }
 
-    return config;
-};
+    return config
+}
