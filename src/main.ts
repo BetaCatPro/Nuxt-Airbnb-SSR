@@ -1,4 +1,3 @@
-import svgIcon from '@/components/SvgIcon/index.vue'
 import App from '@/App.vue'
 import i18n from '@/language/i18n'
 import ElementPlus from 'element-plus'
@@ -19,7 +18,6 @@ export function createApp() {
     app.use(router)
     app.use(i18n)
     app.use(ElementPlus)
-    app.component('svg-icon', svgIcon)
 
     return { app, pinia, head, router }
 }
