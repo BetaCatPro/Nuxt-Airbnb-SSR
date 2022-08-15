@@ -77,7 +77,6 @@ const {
                         <el-button
                             round
                             type="primary"
-                            class="w-full"
                             native-type="submit"
                             @click.prevent="handleSubmitForm(ruleFormRef)"
                         >
