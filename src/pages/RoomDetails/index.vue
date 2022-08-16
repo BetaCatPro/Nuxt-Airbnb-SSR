@@ -6,7 +6,7 @@ import { useAuthStore } from '@/stores/auth'
 import { useHead } from '@vueuse/head'
 import { useRoute } from 'vue-router'
 import { computed, reactive, watch, onBeforeMount } from 'vue'
-import {useI18n} from 'vue-i18n'
+import { useI18n } from 'vue-i18n'
 
 const discounts = [
     {

@@ -52,7 +52,7 @@ const roomDetails = computed(() => roomsStore.roomDetails)
                             :alt="roomDetails.title"
                             fit="cover"
                             class="thumbnail rounded-lg shrink-0 mr-4"
-                            style="width: 64px; height: 64px"
+                            style="width: 64px; height: 64px;"
                         />
                         <div class="text-base text-neutral-900">
                             {{ roomDetails.title }}
@@ -121,10 +121,10 @@ const roomDetails = computed(() => roomsStore.roomDetails)
                                         role="presentation"
                                         focusable="false"
                                         style="
-                                            display: block;
-                                            height: 32px;
-                                            width: 32px;
-                                        "
+                      display: block;
+                      width: 32px;
+                      height: 32px;
+"
                                     >
                                         <defs>
                                             <radialGradient
