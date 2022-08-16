@@ -67,36 +67,36 @@ function handleClickCity(tab: TabsPaneContext) {
                         class="home pb-3"
                     >
                         <div v-if="item.pictureUrl">
-                            <!--                            <router-link-->
-                            <!--                                :to="{ name: 'RoomDetails', params: { id: item.id } }"-->
-                            <!--                                class="rounded overflow-hidden">-->
-                            <!--                                <el-image-->
-                            <!--                                    fit="cover"-->
-                            <!--                                    class="picture rounded"-->
-                            <!--                                    :src="item.pictureUrl"-->
-                            <!--                                    :alt="item.title"/>-->
-                            <!--                            </router-link>-->
-                            <el-image
-                                fit="cover"
-                                class="picture rounded"
-                                :src="item.pictureUrl"
-                                :alt="item.title"
-                            />
+                            <router-link
+                                :to="{
+                                    name: 'RoomDetails',
+                                    params: { id: item.id }
+                                }"
+                                class="rounded overflow-hidden"
+                            >
+                                <el-image
+                                    fit="cover"
+                                    class="picture rounded"
+                                    :src="item.pictureUrl"
+                                    :alt="item.title"
+                                />
+                            </router-link>
                         </div>
 
                         <div
                             v-show="item.title && item.price"
                             class="info pt-2 text-gray-darkest font-heiti"
                         >
-                            <!--                            <router-link-->
-                            <!--                                :to="{ name: 'RoomDetails', params: { id: item.id } }">-->
-                            <!--                                <p class="title line-clamp-2 font-extrabold">-->
-                            <!--                                    {{ item.title }}-->
-                            <!--                                </p>-->
-                            <!--                            </router-link>-->
-                            <p class="title line-clamp-2 font-extrabold">
-                                {{ item.title }}
-                            </p>
+                            <router-link
+                                :to="{
+                                    name: 'RoomDetails',
+                                    params: { id: item.id }
+                                }"
+                            >
+                                <p class="title line-clamp-2 font-extrabold">
+                                    {{ item.title }}
+                                </p>
+                            </router-link>
                             <div class="mt-0.5">
                                 <span class="font-semibold"
                                     >￥{{ item.price }}</span

@@ -1,0 +1,61 @@
+
+.slide-container {
+    .slide-item {
+        border: 10px solid #fff;
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 20%);
+    }
+}
+
+.details {
+    @include secondary-wrapper;
+
+    .line {
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    .room-details {
+        width: 58.333333333333336%;
+
+        .title {
+            font-size: 32px;
+            line-height: 1.125em;
+        }
+    }
+
+    .form-container {
+        margin-left: 8.333333333333332%;
+
+        .price {
+            font-size: 18px;
+            line-height: 1.44444em;
+
+            > span {
+                font-size: 22px;
+            }
+        }
+
+        .form-item {
+            :deep(.el-form-item__label) {
+                margin: 0;
+                height: auto;
+                color: #484848;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1.33333em;
+            }
+        }
+
+        :deep(.btn-guests) {
+            &:hover,
+            &:focus {
+                border-color: #c0c4cc;
+                color: #606266;
+            }
+
+            > span {
+                flex: 1;
+                justify-content: space-between;
+            }
+        }
+    }
+}
