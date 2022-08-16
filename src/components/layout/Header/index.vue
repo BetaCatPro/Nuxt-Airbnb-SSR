@@ -7,8 +7,6 @@ import en from 'element-plus/lib/locale/lang/en'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
-import { computed, ref } from 'vue'
-import { createRequire } from 'module'
 
 // Pinia
 const authStore = useAuthStore()
@@ -56,11 +54,7 @@ async function handleSelect(key: string, keyPath: string[]) {
             alt="airbnb"
             class="icon-airbnb"
         />
-        <el-menu
-            :default-active="activeIndex"
-            mode="horizontal"
-            @select="handleSelect"
-        >
+        <el-menu mode="horizontal" @select="handleSelect">
             <el-menu-item index="orders">{{
                 t('header.menu.reservationCenter')
             }}</el-menu-item>

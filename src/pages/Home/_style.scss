@@ -1,0 +1,15 @@
+.home {
+    .banner {
+        height: 530px;
+        background: url('@/assets/images/banner.jpeg') no-repeat center/cover;
+    }
+
+    .content {
+        @include primary-wrapper;
+
+        .title {
+            font-size: 22px;
+            line-height: 26px;
+        }
+    }
+}
