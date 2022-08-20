@@ -1,12 +1,12 @@
-import TypeObjectStore from '../type';
+import TypeObjectStore from '../type'
 
 const webHistory = {
-  keyPath: 'historyId',
-  indexs: ['pictureURL', 'city', 'title', 'price', 'roomId']
-};
+    keyPath: 'historyId',
+    indexs: ['pictureURL', 'city', 'title', 'price', 'roomId']
+}
 
 const historyObjectStore: TypeObjectStore = {
-  history: webHistory
-};
+    history: webHistory
+}
 
-export default historyObjectStore;
+export default historyObjectStore

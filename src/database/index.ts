@@ -7,4 +7,9 @@ import historyObjectStore from '@/database/objectStores/history'
 // 数据库实例
 export const airbnbDB = new IndexedDB('airbnb')
 
-export { usersObjectStore, languageObjectStore, reservationsObjectStore, historyObjectStore }
+export {
+    usersObjectStore,
+    languageObjectStore,
+    reservationsObjectStore,
+    historyObjectStore
+}
