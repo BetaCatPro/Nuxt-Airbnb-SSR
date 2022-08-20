@@ -2,7 +2,7 @@
 import { useReservationsStore } from '@/stores/reservations'
 import { ClickOutside as vClickOutside } from 'element-plus'
 import { useI18n } from 'vue-i18n'
-import { computed, onBeforeMount } from 'vue'
+import { onBeforeMount, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 const { t } = useI18n()

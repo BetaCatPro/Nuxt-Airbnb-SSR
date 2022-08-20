@@ -7,10 +7,10 @@ import IconFacebook from '@/assets/images/roomDetails/facebook.svg'
 import IconTwitter from '@/assets/images/roomDetails/twitter.svg'
 import IconWechat from '@/assets/images/roomDetails/wechat.svg'
 import IconClose from '@/assets/images/roomDetails/close.svg'
-import { ClickOutside as vClickOutside } from 'element-plus'
 import { useRoomsStore } from '@/stores/rooms'
-import { useI18n } from 'vue-i18n'
+import { ClickOutside as vClickOutside } from 'element-plus'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const roomsStore = useRoomsStore()
@@ -52,7 +52,7 @@ const roomDetails = computed(() => roomsStore.roomDetails)
                             :alt="roomDetails.title"
                             fit="cover"
                             class="thumbnail rounded-lg shrink-0 mr-4"
-                            style="width: 64px; height: 64px;"
+                            style="width: 64px; height: 64px"
                         />
                         <div class="text-base text-neutral-900">
                             {{ roomDetails.title }}
@@ -121,10 +121,10 @@ const roomDetails = computed(() => roomsStore.roomDetails)
                                         role="presentation"
                                         focusable="false"
                                         style="
-                      display: block;
-                      width: 32px;
-                      height: 32px;
-"
+                                            display: block;
+                                            height: 32px;
+                                            width: 32px;
+                                        "
                                     >
                                         <defs>
                                             <radialGradient

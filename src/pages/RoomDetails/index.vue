@@ -1,12 +1,22 @@
 <script lang="ts" setup>
+import { saveReservationAPI } from '@/api/reservations'
+import ArrowRight from '@/assets/images/roomDetails/arrow-right.svg'
 import useForm from '@/composables/auth/useForm'
 import { useRoomsStore } from '@/stores/rooms'
-import { FormRules } from 'element-plus'
+import {
+    ClickOutside as vClickOutside,
+    FormInstance,
+    FormRules,
+    ElMessage
+} from 'element-plus'
+import { dateDiff, parseDate } from '@/utils/util'
 import { useAuthStore } from '@/stores/auth'
+import { v4 as uuidv4 } from 'uuid'
+import { saveHistoryAPI } from '@/api/history'
 import { useHead } from '@vueuse/head'
-import { useRoute } from 'vue-router'
-import { computed, reactive, watch, onBeforeMount } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { computed, reactive, watch, onBeforeMount } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
 const discounts = [
     {
@@ -65,11 +75,13 @@ const shortcuts = [
 ]
 
 const route = useRoute()
+const router = useRouter()
 
 const authStore = useAuthStore()
 const roomsStore = useRoomsStore()
 
 const form = computed(() => roomsStore.form)
+const roomDetails = computed(() => roomsStore.roomDetails)
 const dropdownVisible = computed(() => roomsStore.dropdownVisible)
 const sharePopupVisible = computed(() => roomsStore.sharePopupVisible)
 
@@ -87,6 +99,62 @@ const rules = reactive<FormRules>({
         }
     ]
 })
+
+async function saveHistory(data: any) {
+    const { title, price, imgs } = data
+    const params = {
+        title,
+        price,
+        pictureURL: imgs[0],
+        city: roomsStore.cityCode,
+        historyId: route.params.id + uuidv4(),
+        roomId: route.params.id
+    }
+    await saveHistoryAPI(params)
+}
+
+async function saveReservation() {
+    const { title, price, imgs } = roomDetails.value
+    const params = {
+        roomId: route.params.id,
+        reservationId: route.params.id + uuidv4(),
+        title,
+        price,
+        pictureURL: imgs[0],
+        date: JSON.stringify(ruleForm.date),
+        nights: dateDiff(
+            parseDate(ruleForm.date[0]) as Date,
+            parseDate(ruleForm.date[1]) as Date
+        ),
+        guests: form.value.adults + form.value.children,
+        infants: form.value.infants,
+        city: roomsStore.cityCode
+    }
+
+    const response = await saveReservationAPI(params)
+    if (response) {
+        const { message } = response
+        response.success
+            ? ElMessage({ message, type: 'success', showClose: true })
+            : ElMessage({ message, type: 'error', showClose: true })
+    }
+}
+
+async function handleSubmitForm(formEl: FormInstance | undefined) {
+    if (!formEl) return
+    await formEl.validate((valid, fields) => {
+        if (valid) {
+            authStore.loggedIn
+                ? saveReservation()
+                : router.replace({
+                      name: 'Login',
+                      query: { redirect: route.path }
+                  }) // It navigates without pushing a new history entry
+        } else {
+            console.log('Error submit', fields)
+        }
+    })
+}
 
 function handleClickOutside(event: MouseEvent) {
     const target = event.target as Element
@@ -113,8 +181,8 @@ onBeforeMount(() => {
 
 watch(
     () => roomsStore.roomDetails,
-    () => {
-        authStore.loggedIn
+    (roomDetails) => {
+        authStore.loggedIn && saveHistory(roomDetails)
     }
 )
 
@@ -444,7 +512,11 @@ useHead({
 
                         <!-- Submit Button -->
                         <el-form-item class="mt-6">
-                            <el-button type="danger" class="w-full">
+                            <el-button
+                                type="danger"
+                                class="w-full"
+                                @click="handleSubmitForm(ruleFormRef)"
+                            >
                                 {{ t('rooms.reserve') }}
                             </el-button>
                         </el-form-item>
@@ -458,5 +530,66 @@ useHead({
 </template>
 
 <style lang="scss" scoped>
-@import 'style';
+@import '@/assets/scss/abstracts/mixins.scss';
+
+.slide-container {
+    .slide-item {
+        border: 10px solid #fff;
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 20%);
+    }
+}
+
+.details {
+    @include secondary-wrapper;
+
+    .line {
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    .room-details {
+        width: 58.333333333333336%;
+
+        .title {
+            font-size: 32px;
+            line-height: 1.125em;
+        }
+    }
+
+    .form-container {
+        margin-left: 8.333333333333332%;
+
+        .price {
+            font-size: 18px;
+            line-height: 1.44444em;
+
+            > span {
+                font-size: 22px;
+            }
+        }
+
+        .form-item {
+            :deep(.el-form-item__label) {
+                margin: 0;
+                height: auto;
+                color: #484848;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1.33333em;
+            }
+        }
+
+        :deep(.btn-guests) {
+            &:hover,
+            &:focus {
+                border-color: #c0c4cc;
+                color: #606266;
+            }
+
+            > span {
+                flex: 1;
+                justify-content: space-between;
+            }
+        }
+    }
+}
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useRoomsStore } from '@/stores/rooms'
 import { useI18n } from 'vue-i18n'
-import { computed, ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const { t } = useI18n()
 const roomsStore = useRoomsStore()
